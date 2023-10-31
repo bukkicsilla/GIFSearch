@@ -22,6 +22,7 @@ async function getImage(searchterm) {
 
 //getImage("hilarious");
 $(function () {
+  $("#btn-delete").hide();
   $("form").on("submit", async function (e) {
     e.preventDefault();
     const term = $("input").val();
@@ -30,9 +31,12 @@ $(function () {
       .addClass("img-fluid img-thumbnail")
       .attr({ src: url, alt: "image" })
       .appendTo("#images");
+    $("#btn-delete").show();
   });
+
   $("#btn-delete").on("click", function () {
     $("img").remove();
     $("input").val("");
+    $(this).hide();
   });
 });
